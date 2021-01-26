@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <!--parameter name="LoginName" value="Admin"></parameter>
+    <parameter name="Password" value="admin123"></parameter-->
+    <listeners>
+        <listener class-name="listeners.Listeners"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="C:/My-Repos/SeleniumFramework/src/test/java/tests/LoginPageTest.java">
+        <classes>
+            <class name="tests.LoginPageTest"></class>
+        </classes>
+    </test>
+</suite>
