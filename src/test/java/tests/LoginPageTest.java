@@ -1,32 +1,54 @@
 package tests;
 
 import dataprovider.UserCredentials;
+import enums.CategoryType;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.MyAccountPage;
+import reportManager.extentReport.ExtentLogger;
+import utils.SoftAssertion;
 
 import java.lang.reflect.Method;
 
 
 public class LoginPageTest extends BaseTest {
-
-    @Test(dataProvider = "getData1")
-    //@Parameters({"LoginName", "Password"})
-    public void LoginTest001(UserCredentials UserDetails){
+    @Test(groups = {CategoryType.SANITY})
+    public void LoginTest001(){
+        SoftAssertion softAssertion = new SoftAssertion();
         LoginPage loginPage = new LoginPage();
-        loginPage.enterUserName(UserDetails.getUserName())
-                .enterPassword(UserDetails.getPassword())
-                .clickLoginButton()
-                .isMenuDisplayed("Admin");
+        MyAccountPage myAccountPage = loginPage.
+                clickOnSignInButton().
+                loginToApplication("pravinchavan1992@gmail.com", "Test@123");
+        boolean loggedInName = myAccountPage.getLoggedInUserName().equals("Pravin Chava");
+        softAssertion.assertEquals(loggedInName, true);
+        if(loggedInName){
+            ExtentLogger.pass("Correct Logged in name is shown");
+        }
+        else {
+            ExtentLogger.fail("InCorrect Logged in name is shown", true);
+        }
+        myAccountPage.signOut();
+        softAssertion.assertAll();
     }
-    @Test(dataProvider = "getData", enabled = false)
-    //@Parameters({"LoginName", "Password"})
-    public void LoginTest002(String LoginName, String Password){
+
+    @Test(groups = {CategoryType.SANITY})
+    public void LoginTest002(){
+        SoftAssertion softAssertion = new SoftAssertion();
         LoginPage loginPage = new LoginPage();
-        loginPage.enterUserName(LoginName)
-                .enterPassword(Password)
-                .clickLoginButton()
-                .isMenuDisplayed("Admin");
+        MyAccountPage myAccountPage = loginPage.
+                clickOnSignInButton().
+                loginToApplication("pravinchavan1992@gmail.com", "Test@123");
+        boolean loggedInName = myAccountPage.getLoggedInUserName().equals("Pravin Chavan");
+        softAssertion.assertEquals(loggedInName, true);
+        if(loggedInName){
+            ExtentLogger.pass("Correct Logged in name is shown", true);
+        }
+        else {
+            ExtentLogger.fail("InCorrect Logged in name is shown");
+        }
+        myAccountPage.signOut();
+        softAssertion.assertAll();
     }
 
     @DataProvider

@@ -6,11 +6,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserCredentials {
-    private String UserName;
-    private String Password;
+    private String userName;
+    private String password;
 
     public UserCredentials(String userName, String password) {
-        this.UserName = userName;
-        this.Password = password;
+        this.userName = userName;
+        this.userName = password;
     }
 }
