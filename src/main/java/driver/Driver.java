@@ -1,9 +1,11 @@
 package driver;
 
+import common.AppDetails;
+import common.Apps;
+import common.ReadYamlFile;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ThreadGuard;
 import utils.OptionsManager;
 import utils.Utilities;
 
@@ -17,19 +19,21 @@ public final class Driver {
     public static void invokeBrowser()  {
         String browser = Utilities.getBrowser();
 
+        Apps appDetails = ReadYamlFile.getSettings().getAppData();
+
         if (Objects.isNull(DriverManager.getDriver())) {
-            switch (browser) {
+            switch (appDetails.getBrowserName()) {
                 case "Firefox":
                     WebDriverManager.firefoxdriver().setup();
-                    DriverManager.setDriver(ThreadGuard.protect(new FirefoxDriver(OptionsManager.getFirefoxOptions())));
+                    DriverManager.setDriver(new FirefoxDriver(OptionsManager.getFirefoxOptions()));
                     break;
                 case "Chrome":
                 default:
                     WebDriverManager.chromedriver().setup();
-                    DriverManager.setDriver(ThreadGuard.protect(new ChromeDriver(OptionsManager.getChromeOptions())));
+                    DriverManager.setDriver(new ChromeDriver(OptionsManager.getChromeOptions()));
                     break;
             }
-            DriverManager.getDriver().get(Utilities.getAppUrl());
+            DriverManager.getDriver().get(appDetails.getAppUrl());
             DriverManager.getDriver().manage().deleteAllCookies();
             DriverManager.getDriver().manage().window().maximize();
         }

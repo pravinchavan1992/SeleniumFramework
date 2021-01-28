@@ -40,7 +40,20 @@ public final class ExtentTest {
         }
     }
 
-    public static void createTest(String testcasename){
+    public static void createTest(String testcasename) {
         ExtentManager.setExtentTest(extent.createTest(testcasename));
+    }
+
+
+    public static void addAuthor(String [] author){
+        for (String creator: author){
+            ExtentManager.getExtentTest().assignAuthor(creator);
+        }
+    }
+
+    public static void addGroups(String [] groups){
+        for (String group: groups){
+            ExtentManager.getExtentTest().assignCategory(group);
+        }
     }
 }

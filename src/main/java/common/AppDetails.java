@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Apps {
-    private String appUrl;
-    private String browserName;
+public class AppDetails {
+    private Apps appData;
+
 }

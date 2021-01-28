@@ -8,6 +8,7 @@
     </listeners>
     <test verbose="2" preserve-order="true" name="C:/My-Repos/SeleniumFramework/src/test/java/tests/LoginPageTest.java">
         <classes>
+            <class name="tests.AddToCart"></class>
             <class name="tests.LoginPageTest"></class>
         </classes>
     </test>

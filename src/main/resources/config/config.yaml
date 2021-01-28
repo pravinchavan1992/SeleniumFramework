@@ -1,3 +1,4 @@
-AppDetails:
-    url: http://phptravels.net/login
-    browser: chrome
+---
+appData:
+    appUrl: "http://automationpractice.com/index.php"
+    browserName: chrome
