@@ -3,6 +3,7 @@ package reportManager.extentReport;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.aventstack.extentreports.reporter.configuration.ViewName;
 import utils.FrameworkConstant;
 
 import java.awt.*;
@@ -20,11 +21,13 @@ public final class ExtentTest {
     public static void setupReport() {
         if (Objects.isNull(ExtentManager.getExtentTest())) {
             extent = new ExtentReports();
-            ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstant.getExtentReportFilePath());
+            ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstant.getExtentReportFilePath()).viewConfigurer()
+                    .viewOrder().as(new ViewName[]{ViewName.DASHBOARD, ViewName.TEST,ViewName.CATEGORY}).apply();
             spark.config().setTheme(Theme.STANDARD);
             spark.config().setDocumentTitle("Automation Report");
             spark.config().setReportName("Learning Report Setup");
             extent.attachReporter(spark);
+            extent.setReportUsesManualConfiguration(true);
         }
     }
 

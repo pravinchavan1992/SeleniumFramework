@@ -1,69 +1,67 @@
 package pages;
 
-import driver.DriverManager;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import enums.WaitingStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 import reportManager.extentReport.ExtentLogger;
-import utils.WaitingUtility;
+import reportManager.extentReport.ExtentManager;
+import utils.ElementUtils;
 
-import java.time.Duration;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class BasePage {
-    protected BasePage() {
-
+    public static void clickOnElement(By locator, WaitingStrategy waitingStrategy, String locatorName) {
+        ElementUtils.getWebElement(locator, waitingStrategy).click();
+        ExtentLogger.info("Clicked on " + locatorName);
     }
 
-    public static WebElement getWebElement(By by, WaitingStrategy waitingStrategy) {
-        return new WaitingUtility().waitForElement(by, waitingStrategy);
-    }
-    public static List<WebElement> getWebElements(By by, WaitingStrategy waitingStrategy) {
-        return new WaitingUtility().waitForElements(by, waitingStrategy);
-    }
-    public static void click(By by, WaitingStrategy waitingStrategy) {
-        getWebElement(by, waitingStrategy).click();
-        ExtentLogger.pass("Clicked on : "+by);
-    }
-
-    public static void enterText(By by, String text, WaitingStrategy waitingStrategy) {
-        WebElement element = getWebElement(by, waitingStrategy);
+    public static void enterText(By locator, WaitingStrategy waitingStrategy, String text, String fieldName) {
+        WebElement element = ElementUtils.getWebElement(locator, waitingStrategy);
         element.clear();
         element.sendKeys(text);
-        ExtentLogger.pass("Entered Text in : "+by);
+        ExtentLogger.info("Entered text " + text + " in " + fieldName);
     }
 
-    public static String getTitleOfthePage() {
-        return DriverManager.getDriver().getTitle();
+    public static String getText(By locator, WaitingStrategy waitingStrategy, String locatorName) {
+        String elementText = ElementUtils.getWebElement(locator, waitingStrategy).getText().trim();
+        ExtentLogger.info("Text for webelement " + locatorName + " is " + elementText);
+        return elementText;
     }
 
-    public static String getText(By by, WaitingStrategy waitingStrategy) {
-        return getWebElement(by, waitingStrategy).getText();
+    public static List<WebElement> getAllOptionsFromDropDowm(By locator, WaitingStrategy waitingStrategy, String dropDownName) {
+        Select select = new Select(ElementUtils.getWebElement(locator, waitingStrategy));
+        List<String> dropDownElements = select
+                .getOptions()
+                .stream()
+                .map(x -> x.getText())
+                .collect(Collectors.toList())
+                .stream()
+                .filter(x->x.length()>0)
+                .collect(Collectors.toList());
+
+        ExtentManager.getExtentTest().info("Values of " + dropDownName + MarkupHelper.createOrderedList(dropDownElements).getMarkup());
+        return select.getOptions();
     }
 
-    public static void clearField(By by, WaitingStrategy waitingStrategy) {
-        getWebElement(by, waitingStrategy).clear();
+    public static List<String> getAllDropdownElement(By locator, WaitingStrategy waitingStrategy, String dropdownName) {
+        return getAllOptionsFromDropDowm(locator, waitingStrategy, dropdownName).stream().map(x -> x.getText()).collect(Collectors.toList());
     }
 
-    public static void moveToWebElementAndClick(By by, WaitingStrategy waitingStrategy){
-        Actions action = new Actions(DriverManager.getDriver());
-        action.moveToElement(getWebElement(by, WaitingStrategy.CLICKABLE)).click().build().perform();
-
-    }
-    public static void moveToWebElement(By by, WaitingStrategy waitingStrategy){
-        Actions action = new Actions(DriverManager.getDriver());
-        action.moveToElement(getWebElement(by, WaitingStrategy.CLICKABLE)).build().perform();
-
+    public static WebElement getDefaultSelectedValue(By locator, WaitingStrategy waitingStrategy) {
+        Select select = new Select(ElementUtils.getWebElement(locator, waitingStrategy));
+        return select.getFirstSelectedOption();
     }
 
-    public Boolean isTitle(String title){
-       return new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10)).until(ExpectedConditions.titleIs(title));
+    public static void selectDropdownValue(By locator, WaitingStrategy waitingStrategy, String value) {
+        Select select = new Select(ElementUtils.getWebElement(locator, waitingStrategy));
+        select.selectByVisibleText(value);
     }
 
-
-
-
+    public static void deselectDropdownValue(By locator, WaitingStrategy waitingStrategy, String value) {
+        Select select = new Select(ElementUtils.getWebElement(locator, waitingStrategy));
+        select.deselectByVisibleText(value);
+    }
 }

@@ -1,4 +1,6 @@
 package listeners;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import org.testng.*;
 import org.testng.annotations.Test;
 import reportManager.extentReport.ExtentLogger;

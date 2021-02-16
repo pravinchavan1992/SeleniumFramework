@@ -1,0 +1,4 @@
+---
+appData:
+    appUrl: "http://automationpractice.com/index.php"
+    browserName: chrome

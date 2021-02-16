@@ -2,7 +2,7 @@ package reportManager.extentReport;
 
 import com.aventstack.extentreports.ExtentTest;
 
-public class ExtentManager {
+public final class ExtentManager {
     private ExtentManager() {
 
     }

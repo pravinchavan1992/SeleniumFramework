@@ -1,0 +1,3 @@
+tests\BaseTest.class
+tests\LoginPageTest.class
+tests\AddToCart.class

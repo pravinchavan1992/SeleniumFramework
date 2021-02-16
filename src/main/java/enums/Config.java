@@ -1,6 +1,8 @@
 package enums;
 
 public enum Config {
-    URL,
-    BROWSER
+    appurl,
+    browser,
+    headless,
+    target
 }

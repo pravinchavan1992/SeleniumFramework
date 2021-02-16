@@ -12,10 +12,10 @@ public final class Utilities {
     }
 
     public static String getBrowser()  {
-        return ReadPropertyFile.getProperty(Config.BROWSER);
+        return ReadPropertyFile.getProperty(Config.browser);
     }
 
     public static String getAppUrl(){
-        return ReadPropertyFile.getProperty(Config.URL);
+        return ReadPropertyFile.getProperty(Config.appurl);
     }
 }
