@@ -28,7 +28,7 @@
         </groups>
         <packages>
             <package name="tests">
-                <parameter name = "browser" value="firefox"/>
+                <parameter name = "browser" value="chrome"/>
             </package>
             <package name="tests"/>
         </packages>
@@ -42,7 +42,7 @@
         </groups>
         <packages>
             <package name="tests">
-                <parameter name = "browser" value="firefox"/>
+                <parameter name = "browser" value="chrome"/>
             </package>
             <package name="tests"/>
         </packages>
