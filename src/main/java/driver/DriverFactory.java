@@ -14,7 +14,8 @@ public class DriverFactory implements IDriver{
         WebDriver webdriver;
         switch (target){
             case LOCAL:
-                webdriver= new LocalDriverManager().createInstance(ReadPropertyFile.getProperty(Config.browser));
+                //webdriver= new LocalDriverManager().createInstance(ReadPropertyFile.getProperty(Config.browser));
+                webdriver= new LocalDriverManager().createInstance(browser);
                 break;
             case REMOTE:
                 // getting the browser from the suite file or @Optional on BaseWeb

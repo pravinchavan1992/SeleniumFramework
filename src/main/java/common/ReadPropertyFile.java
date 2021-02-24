@@ -23,7 +23,7 @@ public final class ReadPropertyFile {
     }
 
     public static String getProperty(Config config)  {
-        if (Objects.isNull(prop)) {
+        if (Objects.isNull(prop) || prop.size()==0) {
             new ReadPropertyFile();
         }
         if (Objects.isNull(config.name())) {

@@ -64,4 +64,14 @@ public abstract class BasePage {
         Select select = new Select(ElementUtils.getWebElement(locator, waitingStrategy));
         select.deselectByVisibleText(value);
     }
+
+    public static Boolean isDisplayed(By locator, WaitingStrategy waitingStrategy, String locatorName){
+        boolean flag = ElementUtils.getWebElement(locator, waitingStrategy).isDisplayed();
+        if (flag) {
+            ExtentLogger.info(locatorName + " is disaplyed");
+        } else {
+            ExtentLogger.info(locatorName + " not disaplyed");
+        }
+        return flag;
+    }
 }

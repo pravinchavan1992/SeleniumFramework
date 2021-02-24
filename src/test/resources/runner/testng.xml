@@ -6,10 +6,45 @@
     <listeners>
         <listener class-name="listeners.Listeners"></listener>
     </listeners>
-    <test verbose="2" preserve-order="true" name="Book Room">
-        <parameter name="browser" value="chrome"/>
-        <classes>
-            <class name="tests.Test1"></class>
-        </classes>
+    <test name="Sanity Tests" group-by-instances="true" parallel="methods" thread-count="512">
+        <groups>
+            <run>
+                <include name="Sanity"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests">
+                <parameter name = "browser" value="chrome"/>
+            </package>
+            <package name="tests"/>
+        </packages>
+    </test>
+
+    <test name="Regression Tests" group-by-instances="true" parallel="methods" thread-count="512">
+        <groups>
+            <run>
+                <include name="Regression"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests">
+                <parameter name = "browser" value="firefox"/>
+            </package>
+            <package name="tests"/>
+        </packages>
+    </test>
+
+    <test name="SMOKE Tests" group-by-instances="true" parallel="methods" thread-count="512">
+        <groups>
+            <run>
+                <include name="SMOKE"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests">
+                <parameter name = "browser" value="firefox"/>
+            </package>
+            <package name="tests"/>
+        </packages>
     </test>
 </suite>

@@ -1,14 +1,18 @@
 package tests;
 
+import annotations.FrameworkAnnotation;
+import enums.Author;
 import enums.CategoryType;
 import org.testng.annotations.Test;
 import pages.AccountPage;
 import pages.ExtraDetails;
 import pages.RoomType;
+import reportManager.extentReport.ExtentLogger;
 
 public class Test1 extends BaseTest {
 
-    @Test(groups = {CategoryType.SANITY, CategoryType.REGRESSION})
+    @Test(groups = {CategoryType.SANITY, CategoryType.REGRESSION}, description = "Test Case001")
+    @FrameworkAnnotation(authur = {Author.PC}, category = {CategoryType.SANITY, CategoryType.REGRESSION})
     public void Test001(){
         AccountPage accountPage = new AccountPage();
         accountPage.enterEmail("Test@fmail.com");
@@ -26,9 +30,16 @@ public class Test1 extends BaseTest {
         ExtraDetails extraDetails = new ExtraDetails();
         extraDetails.enterDescription("Test Description");
         extraDetails.clickOnFinishButton();
+        if(extraDetails.isSuccessMessageDisplayed()){
+            ExtentLogger.pass("Room Booking is Completed");
+        }
+        else {
+            ExtentLogger.fail("Room Booking failed",true);
+        }
     }
 
-    @Test(groups = {CategoryType.SANITY, CategoryType.SMOKE})
+    @Test(groups = {CategoryType.SANITY, CategoryType.SMOKE}, description = "Test Case002")
+    @FrameworkAnnotation(authur = {Author.PC}, category = {CategoryType.SANITY, CategoryType.SMOKE})
     public void Test002(){
         AccountPage accountPage = new AccountPage();
         accountPage.enterEmail("Test1@fmail.com");
@@ -46,5 +57,11 @@ public class Test1 extends BaseTest {
         ExtraDetails extraDetails = new ExtraDetails();
         extraDetails.enterDescription("Test Description for Business");
         extraDetails.clickOnFinishButton();
+        if(extraDetails.isSuccessMessageDisplayed()){
+            ExtentLogger.pass("Room Booking is Completed");
+        }
+        else {
+            ExtentLogger.fail("Room Booking failed",true);
+        }
     }
 }
