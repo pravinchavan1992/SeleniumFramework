@@ -26,12 +26,13 @@ public class RemoteDriverManager implements IDriver {
 
         try {
             // a composition of the target grid address and port
-            String gridURL = String.format("http://%s:%s/wd/hub", "configuration.gridUrl()", "configuration.gridPort()");
-
-            remoteWebDriver = new RemoteWebDriver(new URL(gridURL), getCapability(browser));
+            String gridURL = String.format("http://%s:%s/wd/hub", "localhost", "4444");
+            MutableCapabilities cap = getCapability(browser);
+            cap.setCapability("version", "79.0.3945.117");
+            remoteWebDriver = new RemoteWebDriver(new URL(gridURL), cap);
         } catch (MalformedURLException e) {
-//            "logger.error("Grid URL is invalid or Grid is not available");
-//            logger.error(String.format("Browser: %s", browser), e);"
+//           logger.error("Grid URL is invalid or Grid is not available");
+//           logger.error(String.format("Browser: %s", browser), e);"
         } catch (IllegalArgumentException e) {
 //            logger.error(String.format("Browser %s is not valid or recognized", browser), e);
         }
