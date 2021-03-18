@@ -2,11 +2,7 @@
 <project version="4">
   <component name="accountSettings">
     <option name="activeProfile" value="profile:default" />
-<<<<<<< Updated upstream
-    <option name="activeRegion" value="ap-south-1" />
-=======
     <option name="activeRegion" value="us-east-1" />
->>>>>>> Stashed changes
     <option name="recentlyUsedProfiles">
       <list>
         <option value="profile:default" />
@@ -14,11 +10,7 @@
     </option>
     <option name="recentlyUsedRegions">
       <list>
-<<<<<<< Updated upstream
-        <option value="ap-south-1" />
-=======
         <option value="us-east-1" />
->>>>>>> Stashed changes
       </list>
     </option>
   </component>
