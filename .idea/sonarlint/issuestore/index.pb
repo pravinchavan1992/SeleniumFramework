@@ -15,3 +15,5 @@ d
 4src/main/java/driver/remote/RemoteDriverManager.java,5\a\5a1cb22975a2cd6353f05a26aceb572078977e6b
 V
 &src/main/java/listeners/Listeners.java,4\a\4a3d6cb9aafa64bb4500a52e7bfc15787c6f5b2e
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
