@@ -77,4 +77,5 @@ public class RemoteDriverManager implements IDriver {
 
         return capabilities;
     }
+
 }
