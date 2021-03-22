@@ -58,7 +58,7 @@ public class BaseTest {
         try {
             String path = FrameworkConstant.getProjectPath();
             Runtime runtime = Runtime.getRuntime();
-            runtime.exec(path+"/dockerDown.sh");
+            runtime.exec("sh /dockerDown.sh");
 
             File file = new File("output.txt");
             if (file.exists()) {
