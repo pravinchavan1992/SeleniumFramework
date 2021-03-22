@@ -7,6 +7,7 @@ import enums.Config;
 import org.openqa.selenium.WebDriver;
 import org.testng.SkipException;
 import org.testng.annotations.*;
+import utils.FrameworkConstant;
 
 
 import java.io.BufferedReader;
@@ -20,13 +21,14 @@ public class BaseTest {
     }
     @BeforeSuite(alwaysRun = true)
     protected void setUpDocker() {
+        String path = FrameworkConstant.getProjectPath();
         Runtime runtime = Runtime.getRuntime();
         try {
-            runtime.exec("dockerUp.sh");
+            runtime.exec(path+"/dockerUp.sh");
             verifyDockerIsUp();
-            runtime.exec("scaleChrome.sh");
+            runtime.exec(path+"/scaleChrome.sh");
             Thread.sleep(10000);
-            runtime.exec("scaleFirefox.sh");
+            runtime.exec(path+"/scaleFirefox.sh");
             Thread.sleep(10000);
             runtime.exec("taskkill /f /im cmd.exe");
         } catch (InterruptedException | IOException e) {
@@ -54,8 +56,9 @@ public class BaseTest {
     @AfterSuite(alwaysRun = true)
     protected void tearDownDocker() {
         try {
+            String path = FrameworkConstant.getProjectPath();
             Runtime runtime = Runtime.getRuntime();
-            runtime.exec("dockerDown.sh");
+            runtime.exec(path+"/dockerDown.sh");
 
             File file = new File("output.txt");
             if (file.exists()) {
