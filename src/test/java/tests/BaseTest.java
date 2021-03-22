@@ -22,11 +22,11 @@ public class BaseTest {
     protected void setUpDocker() {
         Runtime runtime = Runtime.getRuntime();
         try {
-            runtime.exec("start dockerUp.sh");
+            runtime.exec("dockerUp.sh");
             verifyDockerIsUp();
-            runtime.exec("start scaleChrome.sh");
+            runtime.exec("scaleChrome.sh");
             Thread.sleep(10000);
-            runtime.exec("start scaleFirefox.sh");
+            runtime.exec("scaleFirefox.sh");
             Thread.sleep(10000);
             runtime.exec("taskkill /f /im cmd.exe");
         } catch (InterruptedException | IOException e) {
@@ -55,7 +55,7 @@ public class BaseTest {
     protected void tearDownDocker() {
         try {
             Runtime runtime = Runtime.getRuntime();
-            runtime.exec("start dockerDown.sh");
+            runtime.exec("dockerDown.sh");
 
             File file = new File("output.txt");
             if (file.exists()) {
