@@ -1,15 +1,0 @@
-
-~
-java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "webElements".(†ÒÌ¬úÿÿÿÿ
-h
-java:S1128"RRemove this unused import 'com.aventstack.extentreports.markuputils.MarkupHelper'.(‡ÞÝº
-]
-java:S1128"BRemove this unused import 'org.openqa.selenium.support.ui.Select'.(´—âÛøÿÿÿÿ
-`
-java:S1128	"ERemove this unused import 'reportManager.extentReport.ExtentManager'.(ò’¨ºúÿÿÿÿ
-S
-java:S1128"8Remove this unused import 'java.util.stream.Collectors'.(Óóº´úÿÿÿÿ
-Z
-java:S1128"DRemove this unused import 'reportManager.extentReport.ExtentLogger'.(€ÿ¢–
-U
-java:S1118":Add a private constructor to hide the implicit public one.(Ëö”¦ÿÿÿÿÿ

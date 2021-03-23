@@ -24,13 +24,13 @@ public class BaseTest {
         String path = FrameworkConstant.getProjectPath();
         Runtime runtime = Runtime.getRuntime();
         try {
-            runtime.exec(path+"/dockerUp.sh");
+            runtime.exec("sh /dockerUp.sh");
             verifyDockerIsUp();
-            runtime.exec(path+"/scaleChrome.sh");
+            runtime.exec("sh /scaleChrome.sh");
             Thread.sleep(10000);
-            runtime.exec(path+"/scaleFirefox.sh");
+            runtime.exec("sh /scaleFirefox.sh");
             Thread.sleep(10000);
-            runtime.exec("taskkill /f /im cmd.exe");
+            //runtime.exec("taskkill /f /im cmd.exe");
         } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
