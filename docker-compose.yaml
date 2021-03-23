@@ -4,11 +4,6 @@ version: "3"
 services:
   selenium-hub:
     image: selenium/hub:latest
-    volumes:
-      -./dockerUp.sh:/dockerUp.sh
-      -./dockerDown.sh:/dockerDown.sh
-      -./scaleChrome.sh:/scaleChrome.sh
-      -./scaleFirefox.sh:/scaleFirefox.sh
     container_name: selenium-hub
     restart: always
     ports:
