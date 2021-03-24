@@ -30,7 +30,7 @@
                     <version>3.0.0-M5</version>
                     <configuration>
                         <systemPropertyVariables>
-                            <java.awt.headless>false</java.awt.headless>
+                            <java.awt.headless>true</java.awt.headless>
                         </systemPropertyVariables>
                         <suiteXmlFiles>
                             <suiteXmlFile>src\test\resources\runner\testng.xml</suiteXmlFile>
