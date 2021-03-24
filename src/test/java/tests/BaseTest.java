@@ -19,6 +19,7 @@ public class BaseTest {
 
     protected BaseTest() {
     }
+    @BeforeSuite(alwaysRun = true)
     protected void setUpDocker() {
         Runtime runtime = Runtime.getRuntime();
         try {
@@ -52,6 +53,7 @@ public class BaseTest {
 
 
 
+    @AfterSuite(alwaysRun = true)
     protected void tearDownDocker() {
         try {
             String path = FrameworkConstant.getProjectPath();
