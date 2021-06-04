@@ -19,15 +19,15 @@ public class BaseTest {
 
     protected BaseTest() {
     }
-    @BeforeSuite(alwaysRun = true)
+
     protected void setUpDocker() {
         Runtime runtime = Runtime.getRuntime();
         try {
-            runtime.exec("sh /dockerUp.sh");
+            runtime.exec("cmd /c start dockerUp.bat");
             verifyDockerIsUp();
-            runtime.exec("sh /scaleChrome.sh");
+            runtime.exec("cmd /c start scaleChrome.bat");
             Thread.sleep(10000);
-            runtime.exec("sh /scaleFirefox.sh");
+            runtime.exec("cmd /c start scaleFirefox.bat");
             Thread.sleep(10000);
             //runtime.exec("taskkill /f /im cmd.exe");
         } catch (InterruptedException | IOException e) {
@@ -52,13 +52,11 @@ public class BaseTest {
 
 
 
-
-    @AfterSuite(alwaysRun = true)
     protected void tearDownDocker() {
         try {
             String path = FrameworkConstant.getProjectPath();
             Runtime runtime = Runtime.getRuntime();
-            runtime.exec("sh /dockerDown.sh");
+            runtime.exec("cmd /c start dockerDown.bat");
 
             File file = new File("output.txt");
             if (file.exists()) {

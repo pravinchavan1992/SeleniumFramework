@@ -1,14 +1,8 @@
 version: 0.2
-env:
-  shell: /bin/sh
 phases:
   install:
     runtime-versions:
       java: corretto8
   build:
     commands:
-      - mvn clean install test
-artifacts:
-  files:
-    - '**/*'
-    discard-paths: yes
+      - mvn clean test

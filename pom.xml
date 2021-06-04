@@ -30,7 +30,8 @@
                     <version>2.22.2</version>
                     <configuration>
                         <systemPropertyVariables>
-                            <java.awt.headless>true</java.awt.headless>
+                            <headless>true</headless>
+                            <target>local</target>
                         </systemPropertyVariables>
                         <suiteXmlFiles>
                             <suiteXmlFile>src\test\resources\runner\testng.xml</suiteXmlFile>
@@ -40,61 +41,53 @@
             </plugins>
         </pluginManagement>
     </build>
-    <dependencies><!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+    <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.0.0-alpha-7</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.3.0</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>4.2.2</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.18.1</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-guava -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-guava</artifactId>
             <version>3.4.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core-java8 -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core-java8</artifactId>
             <version>1.0.0m1</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.16</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok-maven-plugin -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-maven-plugin</artifactId>
             <version>1.18.16.0</version>
             <scope>provided</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
@@ -110,7 +103,6 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
         <dependency>
             <groupId>org.aeonbits.owner</groupId>
             <artifactId>owner</artifactId>

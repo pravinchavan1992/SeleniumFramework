@@ -1,0 +1,5 @@
+
+]
+java:S2259 "BA "NullPointerException" could be thrown; "prop" is nullable here.(‡çåËüÿÿÿÿ
+7
+java:S3010"!Remove this assignment of "prop".(âÅä
