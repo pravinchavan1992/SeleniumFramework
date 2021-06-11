@@ -10,7 +10,7 @@ phases:
       - echo $HEADLESS
       - echo $TARGET
       - echo `pwd`
-      - mvn clean test -Dheadless=$HEADLESS -Dtarget=$TARGET -Dsurefire.suiteXmlFiles="src\test\resources\runner\testng.xml"
+      - mvn clean test -Dheadless=$HEADLESS -Dtarget=$TARGET -Dsurefire.suiteXmlFiles="./src/testr/esources/runner/testng.xml"
 
 
 
