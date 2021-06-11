@@ -30,8 +30,8 @@
                     <version>2.22.2</version>
                     <configuration>
                         <systemPropertyVariables>
-                            <headless>true</headless>
-                            <target>local</target>
+                            <headless>${headless}</headless>
+                            <target>${target}</target>
                         </systemPropertyVariables>
                         <suiteXmlFiles>
                             <suiteXmlFile>src\test\resources\runner\testng.xml</suiteXmlFile>
