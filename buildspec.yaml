@@ -9,7 +9,8 @@ phases:
       - echo test started on `Date`
       - echo $HEADLESS
       - echo $TARGET
-      - mvn clean test -Dheadless=$HEADLESS -Dtarget=$TARGET -DsuiteXmlFile="src\test\resources\runner\testng.xml"
+      - echo `pwd`
+      - mvn clean test -Dheadless=$HEADLESS -Dtarget=$TARGET -Dsurefire.suiteXmlFiles="src\test\resources\runner\testng.xml"
 
 
 
