@@ -7,7 +7,9 @@ phases:
     commands:
       - mvn -v
       - echo test started on `Date`
-      - mvn clean test -Dheadless=${HEADLESS} -Dtarget=${TARGET} -DsuiteXmlFile="src\test\resources\runner\testng.xml"
+      - echo $HEADLESS
+      - echo $TARGET
+      - mvn clean test -Dheadless=$HEADLESS -Dtarget=$TARGET -DsuiteXmlFile="src\test\resources\runner\testng.xml"
 
 
 
